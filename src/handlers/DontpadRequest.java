@@ -45,15 +45,16 @@ public final class DontpadRequest {
     
     public static String sendGet() throws Exception {
     	URL link = getUrl();
-//		BufferedReader in = new BufferedReader(new InputStreamReader(link.openConnection().getInputStream()));
-//		String inputLine;
-//		String html = null;
-//		while ((inputLine = in.readLine()) != null){
-//			html += inputLine; //System.out.println(inputLine);
-//		}
-//		in.close();	//System.out.println(html);
-		return null;
+		BufferedReader in = new BufferedReader(new InputStreamReader(link.openConnection().getInputStream()));
+		String inputLine;
+		String html = null;
+		while ((inputLine = in.readLine()) != null){
+			html += inputLine; 
+		}
+		in.close();
+		return html.split("textarea")[1].split(">")[1].split("<")[0];
     }
+    
     
 	private static URL getUrl() throws Exception {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
