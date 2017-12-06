@@ -1,9 +1,13 @@
 package main;
 
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+
 import org.jnativehook.GlobalScreen;
 
 import handlers.DontpadRequest;
 import handlers.ManageService;
+import handlers.Utils;
 
 public class Main {
 	

